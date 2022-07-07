@@ -20,11 +20,11 @@ class HomePage extends StatelessWidget {
         child: const Icon(Icons.add),
         onPressed: () async {
           // The JSONPlaceholder API always responds with whatever was passed in the POST request
-          await Provider.of<PostsApiService>(context)
+          await Provider.of<PostsApiService>(context, listen: false)
               .postPost({'key': 'value'}).then(
             (response) => ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text('Post ${response.body[0]} added!'),
+                content: Text('Post ${response.body['id']} added!'),
               ),
             ),
           );
